@@ -8,9 +8,8 @@ void main() {
   DateTime dateTime = DateTime.now();
   List<Ride> ride = fakeRides;
   
+  
   print(getTodayRides(ride, dateTime));
-
-
 }
 List<Ride> getTodayRides(List<Ride> rides, DateTime referenceDate) {
   return rides.where((ride) => isSameDate(ride.departureDate, referenceDate)).toList();
