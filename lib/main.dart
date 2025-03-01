@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      home: Scaffold(body: RidePrefScreen()),
+      home: SafeArea(child: Scaffold(body: RidePrefScreen())),
     );
   }
 }

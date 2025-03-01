@@ -1,8 +1,5 @@
 import 'package:week_3_blabla_project/dummy_data/dummy_data.dart';
-
-import '../model/ride/locations.dart';
 import '../model/ride/ride.dart';
-import '../model/user/user.dart';
 
 void main() {
   DateTime dateTime = DateTime.now();
