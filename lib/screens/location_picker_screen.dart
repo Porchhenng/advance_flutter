@@ -134,24 +134,28 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        searchBarInput(context),
-        if (locationResults.isNotEmpty)
-          SizedBox(
-            height: 500,
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: AlwaysScrollableScrollPhysics(),
-              itemCount: locationResults.length,
-              itemBuilder: (ctx, index) => baseTile(
-                context,
-                location: locationResults[index],
-                onTap: () => onLocationTap(locationResults[index]),
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            searchBarInput(context),
+            if (locationResults.isNotEmpty)
+              SizedBox(
+                height: 500,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: AlwaysScrollableScrollPhysics(),
+                  itemCount: locationResults.length,
+                  itemBuilder: (ctx, index) => baseTile(
+                    context,
+                    location: locationResults[index],
+                    onTap: () => onLocationTap(locationResults[index]),
+                  ),
+                ),
               ),
-            ),
-          ),
-      ],
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:week_3_blabla_project/screens/location_picker_screen.dart';
 import 'package:week_3_blabla_project/theme/theme.dart';
+import 'package:week_3_blabla_project/utils/animations_util.dart';
 import 'package:week_3_blabla_project/utils/date_time_util.dart';
 import 'package:week_3_blabla_project/widgets/display/bla_divider.dart';
 import 'package:week_3_blabla_project/widgets/inputs/bla_button.dart';
@@ -63,8 +65,38 @@ class _RidePrefFormState extends State<RidePrefForm> {
     });
   }
 
-  void onDepartureTap() {}
-  void onArrivalTap() {}
+  void onDepartureTap() async {
+    Location? newDepartureLocation = await Navigator.of(context).push<Location>(
+        AnimationUtils.createBottomToTopRoute(LocationPickerScreen(
+      initLocation: departure,
+    )));
+
+    if (newDepartureLocation == null) {
+      return;
+    }
+    departure = newDepartureLocation;
+
+    setState(() {
+      
+    });
+  }
+
+  void onArrivalTap() async {
+    Location? newArrivalLocation = await Navigator.of(context).push<Location>(
+        AnimationUtils.createBottomToTopRoute(LocationPickerScreen(
+      initLocation: arrival,
+    )));
+
+    if (newArrivalLocation == null) {
+      return;
+    }
+    arrival = newArrivalLocation;
+
+    setState(() {
+      
+    });
+  }
+
   void onDepartureDateTap() {}
   void onReqTap() {}
   void onSearchTap() {}
@@ -226,8 +258,10 @@ class _RidePrefFormState extends State<RidePrefForm> {
           ),
           requestedSeatsInput(context),
           BlaButton(
-              Text('Search',
-                  ), isPrimary: true,
+              Text(
+                'Search',
+              ),
+              isPrimary: true,
               onPressed: onSearchTap)
         ]);
   }
