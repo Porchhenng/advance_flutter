@@ -67,7 +67,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
   void onArrivalTap() {}
   void onDepartureDateTap() {}
   void onReqTap() {}
-  void onSearachTap() {}
+  void onSearchTap() {}
 
   // ----------------------------------
   // Compute the widgets rendering
@@ -228,7 +228,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
           BlaButton(
               Text('Search',
                   ), isPrimary: true,
-              onPressed: onSearachTap)
+              onPressed: onSearchTap)
         ]);
   }
 }
