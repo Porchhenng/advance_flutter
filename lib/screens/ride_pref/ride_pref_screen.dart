@@ -26,7 +26,7 @@ class _RidePrefScreenState extends State<RidePrefScreen> {
   
   onRidePrefSelected(RidePref ridePref) {
  
-   // 1 - Navigate to the rides screen (with a buttom to top animation) 
+   // 1 - Navigate to the rides screen (with a buttom to top animation)
     
   }
 
