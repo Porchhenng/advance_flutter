@@ -4,6 +4,7 @@ import '../model/ride_pref/ride_pref.dart';
 import '../model/user/user.dart';
 import 'dart:math';
 
+
 final Random random = Random();
 
 ///
@@ -55,6 +56,13 @@ const List<Location> fakeLocations = [
   Location(name: "Brest", country: Country.france),
 ];
 
+  const List<Location> cambodiaLocations = [
+  Location(name: "Phnom Penh", country: Country.cambodia),
+  Location(name: "Siem Reap", country: Country.cambodia),
+  Location(name: "Battambang", country: Country.cambodia),
+  Location(name: "Sihanoukville", country: Country.cambodia),
+  Location(name: "Kampot", country: Country.cambodia),
+];
 // Fake Ride Preferences
 List<RidePreference> fakeRidePrefs = [
   RidePreference(
@@ -94,6 +102,104 @@ List<RidePreference> fakeRidePrefs = [
     requestedSeats: 1,
   ),
 ];
+
+DateTime today = DateTime.now();
+int year = today.year;
+int month = today.month;
+int day = today.day;
+DateTime todayAt5_30AM = DateTime(year, month, day, 5, 30);
+DateTime todayAt8PM = DateTime(year, month, day, 20);
+DateTime todayAt5AM = DateTime(year, month, day, 5);
+
+List<Ride> battambangRides = [
+  Ride(
+    departureLocation: cambodiaLocations[2],
+    arrivalLocation: cambodiaLocations[1],
+    departureDate: todayAt5_30AM,
+    arrivalDateTime: todayAt5_30AM.add(const Duration(hours: 2)),
+    driver: User(
+      firstName: 'Kanika',
+      lastName: '',
+      email: 'kanika@gmail.com',
+      phone: '+855 12-345-678',
+      profilePicture: 'pfp.png',
+      verifiedProfile: false,
+    ),
+    pricePerSeat: 3.99,
+    availableSeats: 2,
+    acceptPets: false,
+  ),
+  Ride(
+    departureLocation: cambodiaLocations[2],
+    arrivalLocation: cambodiaLocations[1],
+    departureDate: todayAt8PM,
+    arrivalDateTime: todayAt8PM.add(const Duration(hours: 2)),
+    driver: User(
+      firstName: 'Chaylim',
+      lastName: '',
+      email: 'chaylim@gmail.com',
+      phone: '+855 12-345-678',
+      profilePicture: 'pfp.png',
+      verifiedProfile: true,
+    ),
+    pricePerSeat: 2.99,
+    availableSeats: 0,
+    acceptPets: false,
+  ),
+  Ride(
+    departureLocation: cambodiaLocations[2],
+    arrivalLocation: cambodiaLocations[1],
+    departureDate: todayAt5AM,
+    arrivalDateTime: todayAt5AM.add(const Duration(hours: 3)),
+    driver: User(
+      firstName: 'Mengtech',
+      lastName: '',
+      email: 'mengtech@gmail.com',
+      phone: '+855 12-345-678',
+      profilePicture: 'pfp.png',
+      verifiedProfile: false,
+    ),
+    pricePerSeat: 3.49,
+    availableSeats: 1,
+    acceptPets: false,
+  ),
+  Ride(
+    departureLocation: cambodiaLocations[2],
+    arrivalLocation: cambodiaLocations[1],
+    departureDate: todayAt8PM,
+    arrivalDateTime: todayAt8PM.add(const Duration(hours: 2)),
+    driver: User(
+      firstName: 'Limhao',
+      lastName: '',
+      email: 'limhao@gmail.com',
+      phone: '+855 12-345-678',
+      profilePicture: 'pfp.png',
+      verifiedProfile: true,
+    ),
+    pricePerSeat: 3.99,
+    availableSeats: 2,
+    acceptPets: true,
+  ),
+  Ride(
+    departureLocation: cambodiaLocations[2],
+    arrivalLocation: cambodiaLocations[1],
+    departureDate: todayAt5AM,
+    arrivalDateTime: todayAt5AM.add(const Duration(hours: 3)),
+    driver: User(
+      firstName: 'Soanda',
+      lastName: '',
+      email: 'limhao@gmail.com',
+      phone: '+855 12-345-678',
+      profilePicture: 'pfp.png',
+      verifiedProfile: true,
+    ),
+    pricePerSeat: 3.00,
+    availableSeats: 1,
+    acceptPets: false,
+  ),
+];
+
+
 
 // Fake  Users
 List<User> fakeUsers = [
@@ -149,7 +255,7 @@ List<User> fakeUsers = [
 
 // Fake  Rides
 
-List<Ride> fakeRides = List.generate(50, (index) {
+List<Ride> fakeRides = List.generate(50000, (index) {
   // Select random locations for departure & arrival (ensuring they are different)
   Location departureLocation =
       fakeLocations[random.nextInt(fakeLocations.length)];
@@ -178,5 +284,6 @@ List<Ride> fakeRides = List.generate(50, (index) {
     driver: driver,
     availableSeats: availableSeats,
     pricePerSeat: pricePerSeat,
+    acceptPets: random.nextBool()
   );
 });

@@ -1,4 +1,5 @@
 import 'package:week_3_blabla_project/model/ride_pref/ride_pref.dart';
+import 'package:week_3_blabla_project/repository/ride_repository.dart';
 
 import '../dummy_data/dummy_data.dart';
 import '../model/ride/ride.dart';
@@ -8,17 +9,49 @@ import '../model/ride/ride.dart';
 ///   - The list of available rides
 ///
 class RidesService {
+  static RidesService? _instance;
 
-  static List<Ride> availableRides = fakeRides;  
-
+  // Access to location repository
+  final RideRepository repository;
 
   ///
-  ///  Return the relevant rides, given the passenger preferences
+  /// Private constructor
   ///
-  static List<Ride> getRidesFor(RidePreference preferences) {
- 
-    // For now, just a test
-    return availableRides.where( (ride) => ride.departureLocation == preferences.departure && ride.arrivalLocation == preferences.arrival).toList();
+  RidesService._internal(this.repository);
+
+  ///
+  /// Initialize the service with a LocationRepository
+  ///
+  static void initialize(RideRepository repository) {
+    if (_instance == null) {
+      _instance = RidesService._internal(repository);
+    } else {
+      throw Exception("RidesService is already initialized.");
+    }
   }
- 
+
+  ///
+  /// Singleton accessor
+  ///
+  static RidesService get instance {
+    if (_instance == null) {
+      throw Exception("LocationsService is not initialized. Call initialize() first.");
+    }
+    return _instance!;
+  }
+
+  List<Ride> getRides ({ required RidePreference ridePref, RideFilters? filter }){
+    return repository.getRides(ridePref: ridePref, filter: filter);
+  }
+  
+
+  /// Retrieve the list of available locations
+  /// First, try to load from the repository; if no data is returned,
+  /// fallback to dummy data.
+
+}
+
+class RideFilters {
+  bool acceptPets;
+  RideFilters({required this.acceptPets});
 }

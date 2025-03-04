@@ -7,17 +7,10 @@ import '../../dummy_data/dummy_data.dart';
 
 class MockLocationRepository extends LocationRepository {
 
-
   @override
   List<Location> getLocation() {
-    // TODO: implement getLocation
-    return [
-      Location(name: "Phnom Penh", country: Country.cambodia),
-      Location(name: "Siem Reap", country: Country.cambodia),
-      Location(name: "Battambang", country: Country.cambodia),
-      Location(name: "Sihannoukvile", country: Country.cambodia),
-      Location(name: "Kampot", country: Country.cambodia),
-    ];
+
+    return cambodiaLocations;
   }
 
 

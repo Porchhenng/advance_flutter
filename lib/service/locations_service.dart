@@ -10,9 +10,6 @@ class LocationsService {
   // Access to location repository
   final LocationRepository repository;
 
-  // The current selected location preference
-  Location? _currentPreference;
-
   ///
   /// Private constructor
   ///

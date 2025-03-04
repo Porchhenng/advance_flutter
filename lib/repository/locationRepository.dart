@@ -5,7 +5,5 @@ import '../model/ride_pref/ride_pref.dart';
 abstract class LocationRepository {
 
   List<Location> getLocation();
-
- 
 }
 
