@@ -33,7 +33,7 @@ class _RideScreenState extends State<RideScreen> {
   }
 
   void findRides() {
-    foundRides = RidesService.getRidesFor(ridePref);
+    foundRides = RidesService.getRides(ridePref);
     debugPrint(foundRides.toString());
   }
 

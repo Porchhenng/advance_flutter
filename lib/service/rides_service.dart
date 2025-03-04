@@ -35,7 +35,7 @@ class RidesService {
   ///
   static RidesService get instance {
     if (_instance == null) {
-      throw Exception("LocationsService is not initialized. Call initialize() first.");
+      throw Exception("RidesService is not initialized. Call initialize() first.");
     }
     return _instance!;
   }
@@ -50,7 +50,6 @@ class RidesService {
   /// fallback to dummy data.
 
 }
-
 class RideFilters {
   bool acceptPets;
   RideFilters({required this.acceptPets});
